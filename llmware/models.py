@@ -10844,8 +10844,12 @@ class ModelResources:
 
     @classmethod
     def unload_model(cls, model_name):
-        """ Not implemented currently. """
-        return 0
+        if model_name in cls._ModelState.models_list:
+            # Remove the reference so Python can GC it
+            delattr(cls._ModelState, model_name)
+            cls._ModelState.models_list.remove(model_name)
+            cls._ModelState.models_loaded -= 1
+            logger.info(f"ModelResources - Unloaded model: {model_name}")
 
     @classmethod
     def check_if_model_loaded(cls, model_name):
