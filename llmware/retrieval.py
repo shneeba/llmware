@@ -1760,3 +1760,54 @@ class Query:
 
         return result_dict
 
+    def get_docid_filename_map(self):
+        """
+        Returns a list of dictionaries, each containing "doc_ID" and "file_source"
+        for every distinct doc_ID in this library.
+
+        The mapping is one doc_ID -> one file_source (the first occurrence in
+        the collection). This is usually enough to uniquely match a doc_ID to
+        a particular file.
+
+        Returns
+        -------
+        list of dict
+            Each dict has the form:
+                {
+                "doc_ID": <int or str>,
+                "file_source": <str>
+                }
+            where <int or str> is the document ID, and <str> is the associated filename or path.
+        """
+        # 1) Create a CollectionRetrieval object for this library
+        collection_retrieval = CollectionRetrieval(self.library_name, account_name=self.account_name)
+        
+        # 2) Retrieve the entire collection cursor
+        collection_cursor = collection_retrieval.get_whole_collection()
+        
+        # 3) Pull all results from the cursor
+        all_entries = collection_cursor.pull_all()
+
+        # 4) Build a dictionary to store doc_ID -> file_source
+        doc_map = {}
+
+        for entry in all_entries:
+            doc_id = entry.get("doc_ID")
+            file_source = entry.get("file_source")
+
+            # Only set file_source once per doc_ID (first occurrence)
+            if doc_id is not None and file_source is not None:
+                if doc_id not in doc_map:
+                    doc_map[doc_id] = file_source
+
+        # 5) Convert the mapping into a list of dicts
+        result = [
+            {"doc_ID": did, "file_source": fname}
+            for did, fname in doc_map.items()
+        ]
+
+        # 6) Close underlying database cursor/connection
+        collection_retrieval.close()
+
+        # 7) Return the final list
+        return result
