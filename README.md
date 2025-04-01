@@ -1,5 +1,5 @@
 # llmware
-![Static Badge](https://img.shields.io/badge/python-3.9_%7C_3.10%7C_3.11%7C_3.12-blue?color=blue)
+![Static Badge](https://img.shields.io/badge/python-3.9_%7C_3.10%7C_3.11%7C_3.12%7C_3.13-blue?color=blue)
 ![PyPI - Version](https://img.shields.io/pypi/v/llmware?color=blue)
 [![discord](https://img.shields.io/badge/Chat%20on-Discord-blue?logo=discord&logoColor=white)](https://discord.gg/MhZn5Nc39h)   
 [![Documentation](https://github.com/llmware-ai/llmware/actions/workflows/pages.yml/badge.svg)](https://github.com/llmware-ai/llmware/actions/workflows/pages.yml)  
@@ -876,6 +876,15 @@ Questions and discussions are welcome in our [github discussions](https://github
 
 See also [additional deployment/install release notes in wheel_archives](https://github.com/llmware-ai/llmware/tree/main/wheel_archives)   
 
+**Monday, March 3 - v0.4.0**  
+ - Updates in GGUF implementation, configs and libs  
+ - Updates in ONNXRuntime implementation and configs  
+ - New Models added to ModelCatalog, including phi-4, Deepseek-Qwen-7B, Deepseek-Qwen-14B, and many others  
+ - Added support for Windows ARM64  
+ - Changed default active_db to "sqlite" (both mongo and postgres available for production)  
+ - Streamlined dependencies in core requirements.txt and pip install  
+ - 'Extra/optional' dependencies available in requirements_extras.txt and through configurations passed in the pip install process (see setup.py for options)
+   
 **Friday, November 8 - v0.3.9**  
  - Enhanced Azure OpenAI configuration, including streaming generation  
  - Removed deprecated parser binaries for Linux aarch64 and Mac x86  
@@ -1157,8 +1166,9 @@ For complete history of release notes, please open the Change log tab.
 [IPA.Optimization.Summary.LLMWare (1).pdf](https://github.com/user-attachments/files/18292873/IPA.Optimization.Summary.LLMWare.1.pdf)
 
 ## About Model HQ
-  - **Privacy Policy** [AI BLOKS PRIVACY POLICY (1.2.25).docx](https://github.com/user-attachments/files/18291352/AI.BLOKS.PRIVACY.POLICY.1.2.25.docx)
+  - **Privacy Policy** [AI.BLOKS.PRIVACY.POLICY.1.3.25.pdf](https://github.com/user-attachments/files/19289355/AI.BLOKS.PRIVACY.POLICY.1.3.25.pdf)
 
-- **Terms of Service** [AI Bloks Terms of Service 1.3.25.docx](https://github.com/user-attachments/files/18291360/AI.Bloks.Terms.of.Service.1.3.25.docx)
+- **Terms of Service** [AI.Bloks.Terms.of.Service.3.3.25.pdf](https://github.com/user-attachments/files/19289545/AI.Bloks.Terms.of.Service.3.3.25.pdf)
+
 - **Acceptable Use Policy**[Acceptable Use Policy for Model HQ by AI BLOKS LLC.docx](https://github.com/user-attachments/files/18291481/Acceptable.Use.Policy.for.Model.HQ.by.AI.BLOKS.LLC.docx)
 
